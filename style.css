@@ -1,0 +1,148 @@
+.dark-mode {
+  --blue: hsl(235, 21%, 11%);
+  --desaturated-blue: hsl(235, 24%, 19%);
+  --light-blue: hsl(234, 39%, 85%);
+  --light-blue-hover: hsl(236, 33%, 92%);
+  --dark-blue: hsl(234, 11%, 52%);
+  --very-dark-blue: hsl(233, 14%, 35%);
+  --very-dark-grayish-blue: hsl(237, 14%, 26%);
+  --bg-image: url("./images/bg-desktop-dark.jpg");
+}
+
+.light-mode {
+  --lm-light-gray: hsl(0, 0%, 98%);
+  --lm-light-blue: hsl(233, 11%, 84%);
+  --lm-light-grayish-blue: hsl(236, 33%, 92%);
+  --lm-dark-blue: hsl(236, 9%, 61%);
+  --lm-very-dark-Blue: hsl(235, 19%, 35%);
+  --bg-image: 0 0 url("./images/bg-desktop-light.jpg") no-repeat;
+}
+
+:root {
+  /* primary colors */
+  --bright-blue: hsl(220, 98%, 61%);
+  /* Check Background: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%) */
+
+  --ff-josefin: "Josefin Sans", sans-serif;
+}
+
+/* ------------------- */
+/* Reset               */
+/* ------------------- */
+/* Box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+  margin: 0;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+body {
+  background-image: var(--bg-image);
+  background-repeat: no-repeat;
+  background-color: var(--blue);
+  font-family: var(--ff-josefin);
+  font-size: 18px;
+  color: var(--light-blue);
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  /* min-width: 500px; */
+  width: 100%;
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+header {
+  padding-top: 100px;
+  padding-bottom: 50px;
+}
+
+.todo-heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 0.5rem;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row nowrap;
+  justify-content: space-between;
+}
+
+.theme-toggle-btn #theme {
+  display: none;
+}
+.theme-toggle-btn #theme + label::before {
+  content: "";
+  background: url(./images/icon-sun.svg);
+  display: block;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+}
+.theme-toggle-btn #theme:checked + label::before {
+  background: url(./images/icon-moon.svg);
+}
+
+.add-task {
+  height: 64px;
+  width: 100%;
+  border-radius: 5px;
+  background-color: var(--desaturated-blue);
+  margin: 0 0 25px;
+  padding: 0 26px;
+  position: relative;
+}
+
+.for-circle {
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  border: 1px solid var(--light-blue);
+  border-radius: 50%;
+  margin-top: 1.05em;
+}
+
+#addTask {
+  background: transparent;
+  outline: none;
+  border: none;
+  width: 100%;
+  height: 64px;
+  padding: 0;
+  padding-left: 45px;
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--light-blue);
+  letter-spacing: -0.3px;
+}
+
+.todo-list {
+  background-color: var(--desaturated-blue);
+  width: 100%;
+  border-radius: 5px;
+  list-style-type: none;
+  padding: 0;
+}
