@@ -1,26 +1,28 @@
 .dark-mode {
-  --blue: hsl(235, 21%, 11%);
-  --desaturated-blue: hsl(235, 24%, 19%);
-  --light-blue: hsl(234, 39%, 85%);
-  --light-blue-hover: hsl(236, 33%, 92%);
-  --dark-blue: hsl(234, 11%, 52%);
+  --bright-blue: hsl(220, 98%, 61%);
+  --bg-clr: hsl(235, 21%, 11%);
+  --bg-todo: hsl(235, 24%, 19%);
+  --font-clr: hsl(234, 39%, 85%);
+  --font-clr-hover: hsl(236, 33%, 92%);
+  --font-clr-sec: hsl(234, 11%, 52%);
   --very-dark-blue: hsl(233, 14%, 35%);
   --very-dark-grayish-blue: hsl(237, 14%, 26%);
   --bg-image: url("./images/bg-desktop-dark.jpg");
 }
 
 .light-mode {
-  --lm-light-gray: hsl(0, 0%, 98%);
-  --lm-light-blue: hsl(233, 11%, 84%);
-  --lm-light-grayish-blue: hsl(236, 33%, 92%);
-  --lm-dark-blue: hsl(236, 9%, 61%);
-  --lm-very-dark-Blue: hsl(235, 19%, 35%);
-  --bg-image: 0 0 url("./images/bg-desktop-light.jpg") no-repeat;
+  --bright-blue: hsl(220, 98%, 61%);
+  --bg-todo: hsl(0, 0%, 98%);
+  --bg-clr: hsl(233, 11%, 84%);
+  --font-clr-sec: hsl(236, 33%, 92%);
+  --font-clr: hsl(236, 9%, 61%);
+  --font-clr-hover: hsl(235, 19%, 35%);
+  --bg-image: url("./images/bg-desktop-light.jpg");
 }
 
 :root {
   /* primary colors */
-  --bright-blue: hsl(220, 98%, 61%);
+
   /* Check Background: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%) */
 
   --ff-josefin: "Josefin Sans", sans-serif;
@@ -59,10 +61,10 @@ select {
 body {
   background-image: var(--bg-image);
   background-repeat: no-repeat;
-  background-color: var(--blue);
+  background-color: var(--bg-clr);
   font-family: var(--ff-josefin);
   font-size: 18px;
-  color: var(--light-blue);
+  color: var(--font-clr-hover);
   display: flex;
   justify-content: center;
 }
@@ -106,43 +108,128 @@ header {
   background: url(./images/icon-moon.svg);
 }
 
-.add-task {
+.input-container {
   height: 64px;
   width: 100%;
   border-radius: 5px;
-  background-color: var(--desaturated-blue);
+  background-color: var(--bg-todo);
   margin: 0 0 25px;
-  padding: 0 26px;
-  position: relative;
+  /* padding: 0 26px; */
+  /* position: relative; */
+  display: flex;
+  align-items: center;
 }
 
 .for-circle {
   width: 25px;
   height: 25px;
-  line-height: 25px;
-  border: 1px solid var(--light-blue);
+  margin-left: 25px;
+  /* line-height: 25px; */
+  border: 1px solid var(--font-clr-hover);
   border-radius: 50%;
-  margin-top: 1.05em;
+  /* margin-top: 1.05em; */
 }
 
-#addTask {
+#input-task {
   background: transparent;
   outline: none;
   border: none;
   width: 100%;
   height: 64px;
   padding: 0;
-  padding-left: 45px;
+  /* padding-left: 45px; */
   font-weight: 400;
   font-size: 18px;
-  color: var(--light-blue);
+  color: var(--font-clr);
   letter-spacing: -0.3px;
 }
 
-.todo-list {
-  background-color: var(--desaturated-blue);
+.todolist-container {
+  border-radius: 5px;
+}
+.todo-container {
+  height: 64px;
+  width: 100%;
+  /* border-radius: 5px; */
+  border-bottom: 1px solid var(--very-dark-blue);
+  background-color: var(--bg-todo);
+
   width: 100%;
   border-radius: 5px;
   list-style-type: none;
   padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.todo-container button {
+  display: none;
+}
+.todo-container:hover button {
+  display: inline;
+  cursor: pointer;
+}
+
+.todo-container label {
+  cursor: pointer;
+  color: var(--font-clr);
+  display: flex;
+  align-items: center;
+}
+
+.todo-container input[type="checkbox"] {
+  cursor: pointer;
+  opacity: 0;
+  position: absolute;
+}
+
+.todo-container label::before {
+  content: "";
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 2px solid var(--very-dark-blue);
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+.todo-container label:hover::before,
+.todo-container input[type="checkbox"]:hover + label::before {
+  border-color: wheat;
+}
+
+.todo-container input[type="checkbox"]:checked + label::before {
+  content: url(./images/icon-check.svg);
+  border: none;
+  background-image: linear-gradient(
+    135deg,
+    hsl(192, 100%, 67%),
+    hsl(280, 87%, 65%)
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-container input[type="checkbox"]:checked + label {
+  text-decoration: line-through;
+  color: var(--very-dark-blue);
+}
+
+.remove-todo-item {
+  background-color: transparent;
+  font-size: 34px;
+  outline: none;
+  border: none;
+  color: var(--very-dark-blue);
+}
+
+.bottom-btns {
+  height: 64px;
+  width: 100%;
+  background-color: var(--bg-todo);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
 }
