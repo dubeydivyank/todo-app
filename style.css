@@ -21,17 +21,10 @@
 }
 
 :root {
-  /* primary colors */
-
-  /* Check Background: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%) */
-
   --ff-josefin: "Josefin Sans", sans-serif;
 }
 
-/* ------------------- */
-/* Reset               */
-/* ------------------- */
-/* Box sizing */
+/* Box sizing RESET */
 *,
 *::before,
 *::after {
@@ -58,6 +51,12 @@ select {
   font: inherit;
 }
 
+.flex-row {
+  display: flex;
+  flex-direction: row nowrap;
+  justify-content: space-between;
+}
+
 body {
   background-image: var(--bg-image);
   background-repeat: no-repeat;
@@ -69,16 +68,18 @@ body {
   justify-content: center;
 }
 
-.container {
-  /* min-width: 500px; */
-  width: 100%;
-  padding-left: 20%;
-  padding-right: 20%;
-}
-
+/*------------------------------------------------------------------*/
+/*---------------------HEADER & THEME-------------------------------*/
+/*------------------------------------------------------------------*/
 header {
   padding-top: 100px;
   padding-bottom: 50px;
+}
+
+.container {
+  width: 100%;
+  padding-left: 20%;
+  padding-right: 20%;
 }
 
 .todo-heading {
@@ -87,15 +88,10 @@ header {
   letter-spacing: 0.5rem;
 }
 
-.flex-row {
-  display: flex;
-  flex-direction: row nowrap;
-  justify-content: space-between;
-}
-
 .theme-toggle-btn #theme {
   display: none;
 }
+
 .theme-toggle-btn #theme + label::before {
   content: "";
   background: url(./images/icon-sun.svg);
@@ -104,10 +100,14 @@ header {
   height: 26px;
   cursor: pointer;
 }
+
 .theme-toggle-btn #theme:checked + label::before {
   background: url(./images/icon-moon.svg);
 }
 
+/*------------------------------------------------------------------*/
+/*---------------------INPUT TASK CONTAINER-------------------------*/
+/*------------------------------------------------------------------*/
 .input-container {
   height: 64px;
   width: 100%;
@@ -144,18 +144,15 @@ header {
   letter-spacing: -0.3px;
 }
 
-.todolist-container {
-  border-radius: 5px;
-}
+/*------------------------------------------------------------------*/
+/*---------------------TODO CONTAINER-------------------------------*/
+/*------------------------------------------------------------------*/
+
 .todo-container {
   height: 64px;
   width: 100%;
-  /* border-radius: 5px; */
-  border-bottom: 1px solid var(--very-dark-blue);
+  border-bottom: 0.5px solid var(--very-dark-blue);
   background-color: var(--bg-todo);
-
-  width: 100%;
-  border-radius: 5px;
   list-style-type: none;
   padding: 0;
   display: flex;
@@ -183,7 +180,43 @@ header {
   position: absolute;
 }
 
-.todo-container label::before {
+/* test */
+.checkmark {
+  content: "";
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 2px solid var(--very-dark-blue);
+  margin-left: 25px;
+  margin-right: 25px;
+}
+.todo-container input[type="checkbox"]:hover ~ .checkmark {
+  border-color: wheat;
+}
+.todo-container input[type="checkbox"]:checked ~ .checkmark {
+  background: center url(./images/icon-check.svg) no-repeat,
+    linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+}
+.todo-container input[type="checkbox"]:checked ~ .text {
+  text-decoration: line-through;
+  color: var(--very-dark-blue);
+}
+
+/* test end */
+
+.remove-todo-item {
+  width: 18px;
+  height: 18px;
+  background: url(./images/icon-cross.svg);
+  background-color: transparent;
+  margin-left: auto;
+  margin-right: 25px;
+  outline: none;
+  border: none;
+  color: var(--very-dark-blue);
+}
+
+/* .todo-container label::before {
   content: "";
   width: 25px;
   height: 25px;
@@ -214,22 +247,50 @@ header {
 .todo-container input[type="checkbox"]:checked + label {
   text-decoration: line-through;
   color: var(--very-dark-blue);
-}
+} */
 
-.remove-todo-item {
-  background-color: transparent;
-  font-size: 34px;
-  outline: none;
-  border: none;
-  color: var(--very-dark-blue);
-}
-
+/*------------------------------------------------------------------*/
+/*---------------------BOTTOM BUTTONS-------------------------------*/
+/*------------------------------------------------------------------*/
 .bottom-btns {
   height: 64px;
   width: 100%;
-  background-color: var(--bg-todo);
   border-radius: 5px;
+  border-top-right-radius: 0%;
+  border-top-left-radius: 0%;
+  background-color: var(--bg-todo);
   display: flex;
   align-items: center;
   font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--very-dark-blue);
+  padding: 20px 20px 20px 27px;
+}
+.filters {
+  font-weight: 700;
+}
+.filters input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.filters label {
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+.filters label:hover {
+  color: var(--font-clr-hover);
+}
+.filters input[type="radio"]:checked ~ span {
+  color: var(--bright-blue);
+}
+
+.clear-completed {
+  cursor: pointer;
+}
+
+.clear-completed:hover {
+  color: var(--font-clr-hover);
 }

@@ -17,6 +17,7 @@
 
   <body class="dark-mode">
     <div class="container">
+      <!-- HEADER & THEME -->
       <header class="flex-row">
         <h1 class="todo-heading">TODO</h1>
         <div class="theme-toggle-btn">
@@ -25,6 +26,7 @@
         </div>
       </header>
 
+      <!-- TEXT INPUT FROM -->
       <main>
         <div class="input-container">
           <span class="for-circle"></span>
@@ -39,29 +41,28 @@
         <!--  -->
         <!--  -->
         <!--  -->
-        <!-- <section class="todo-list">
-          <ul class="todo-list">
-            <li class="flex-row">
-              <label for="" class="list-item">
-                <input type="checkbox" name="todoItem" checked />
-                <span class="checkmark"></span>
-                <span class="text"
-                  >texdsfgsdfgsdfgsdfgsdfgsdfgsdgfsdgfsdgsdgsgts 1</span
-                >
-              </label>
-            </li>
-          </ul>
-        </section> -->
+
+        <!--  -->
+        <!--  -->
         <section class="todolist-container">
           <div class="todo-container">
-            <input type="checkbox" id="todo-item" />
-            <label for="todo-item">Jog </label>
-            <button class="remove-todo-item">&#215</button>
+            <label>
+              <input type="checkbox" />
+              <span class="checkmark"></span>
+              <span class="text">abcadfasdf</span>
+            </label>
+            <button class="remove-todo-item"></button>
           </div>
         </section>
         <!--  -->
         <!--  -->
-        <!--  -->
+        <!-- <section class="todolist-container">
+          <div class="todo-container">
+            <input type="checkbox" id="todo-item" />
+            <label for="todo-item">Jog </label>
+            <button class="remove-todo-item"></button>
+          </div>
+        </section> -->
         <!--  -->
         <!--  -->
         <div class="bottom-btns flex-row">
@@ -69,18 +70,18 @@
           <div class="filters flex-row">
             <label>
               <input type="radio" name="filter" id="all" checked />
-              <span>all</span>
+              <span>All</span>
             </label>
             <label>
               <input type="radio" name="filter" id="active" checked />
-              <span>active</span>
+              <span>Active</span>
             </label>
             <label>
               <input type="radio" name="filter" id="completed" checked />
-              <span>completed</span>
+              <span>Completed</span>
             </label>
           </div>
-          <span class="clearCompleted">Clear Completed</span>
+          <span class="clear-completed">Clear Completed</span>
         </div>
       </main>
     </div>
