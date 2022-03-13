@@ -1,22 +1,33 @@
 .dark-mode {
   --bright-blue: hsl(220, 98%, 61%);
-  --bg-clr: hsl(235, 21%, 11%);
   --bg-todo: hsl(235, 24%, 19%);
+
+  --bg-clr: hsl(235, 21%, 11%);
   --font-clr: hsl(234, 39%, 85%);
+  --heading-clr: hsl(236, 33%, 92%);
   --font-clr-hover: hsl(236, 33%, 92%);
   --font-clr-sec: hsl(234, 11%, 52%);
   --very-dark-blue: hsl(233, 14%, 35%);
   --very-dark-grayish-blue: hsl(237, 14%, 26%);
+
   --bg-image: url("./images/bg-desktop-dark.jpg");
 }
 
 .light-mode {
   --bright-blue: hsl(220, 98%, 61%);
   --bg-todo: hsl(0, 0%, 98%);
-  --bg-clr: hsl(233, 11%, 84%);
+  --very-dark-blue: hsl(233, 14%, 35%); /*change*/
+  --heading-clr: hsl(0, 0%, 98%);
+
+  --bg-clr: hsl(231, 14%, 90%);
   --font-clr-sec: hsl(236, 33%, 92%);
   --font-clr: hsl(236, 9%, 61%);
   --font-clr-hover: hsl(235, 19%, 35%);
+  /* --bg-todo: hsl(0, 0%, 98%);
+  --bg-clr: hsl(233, 11%, 84%);
+  --font-clr-sec: hsl(236, 33%, 92%);
+  --font-clr: hsl(236, 9%, 61%);
+  --font-clr-hover: hsl(235, 19%, 35%); */
   --bg-image: url("./images/bg-desktop-light.jpg");
 }
 
@@ -63,7 +74,6 @@ body {
   background-color: var(--bg-clr);
   font-family: var(--ff-josefin);
   font-size: 18px;
-  color: var(--font-clr-hover);
   display: flex;
   justify-content: center;
 }
@@ -85,6 +95,7 @@ header {
 .todo-heading {
   font-size: 2.5rem;
   font-weight: 700;
+  color: var(--heading-clr);
   letter-spacing: 0.5rem;
 }
 
@@ -120,14 +131,26 @@ header {
   align-items: center;
 }
 
-.for-circle {
+/* .for-circle {
+  content: ;
   width: 25px;
   height: 25px;
   margin-left: 25px;
-  /* line-height: 25px; */
+  
   border: 1px solid var(--font-clr-hover);
   border-radius: 50%;
-  /* margin-top: 1.05em; */
+  
+} */
+
+.for-circle::before {
+  content: "";
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 1px solid var(--very-dark-blue);
+  margin-left: 25px;
+  margin-right: 25px;
+  display: flex;
 }
 
 #input-task {
@@ -137,11 +160,15 @@ header {
   width: 100%;
   height: 64px;
   padding: 0;
-  /* padding-left: 45px; */
   font-weight: 400;
   font-size: 18px;
   color: var(--font-clr);
   letter-spacing: -0.3px;
+}
+
+::placeholder {
+  color: var(--very-dark-blue);
+  opacity: 0.8;
 }
 
 /*------------------------------------------------------------------*/
@@ -186,7 +213,7 @@ header {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  border: 2px solid var(--very-dark-blue);
+  border: 1px solid var(--very-dark-blue);
   margin-left: 25px;
   margin-right: 25px;
 }
@@ -293,4 +320,17 @@ header {
 
 .clear-completed:hover {
   color: var(--font-clr-hover);
+}
+
+.hidden {
+  display: none;
+}
+
+/* drag and drop */
+.drag-to-reorder {
+  display: flex;
+  justify-content: center;
+  font-size: 12px;
+  margin-top: 4em;
+  color: var(--very-dark-blue);
 }

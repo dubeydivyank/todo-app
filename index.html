@@ -37,53 +37,40 @@
             id="input-task"
           />
         </div>
-        <!--  -->
-        <!--  -->
-        <!--  -->
-        <!--  -->
-
-        <!--  -->
-        <!--  -->
+        <!--  ----------->
+        <!-- TODO LIST -->
         <section class="todolist-container">
-          <div class="todo-container">
+          <!-- <div class="todo-container">
             <label>
               <input type="checkbox" />
               <span class="checkmark"></span>
               <span class="text">abcadfasdf</span>
             </label>
             <button class="remove-todo-item"></button>
-          </div>
+          </div> -->
         </section>
-        <!--  -->
-        <!--  -->
-        <!-- <section class="todolist-container">
-          <div class="todo-container">
-            <input type="checkbox" id="todo-item" />
-            <label for="todo-item">Jog </label>
-            <button class="remove-todo-item"></button>
-          </div>
-        </section> -->
-        <!--  -->
-        <!--  -->
+        <!--  ---------------->
+        <!--BOTTOM BUTTONS  -->
         <div class="bottom-btns flex-row">
-          <div><span>2</span> items left</div>
+          <div><span class="item-count">0</span> items left</div>
           <div class="filters flex-row">
             <label>
               <input type="radio" name="filter" id="all" checked />
               <span>All</span>
             </label>
             <label>
-              <input type="radio" name="filter" id="active" checked />
+              <input type="radio" name="filter" id="active" />
               <span>Active</span>
             </label>
             <label>
-              <input type="radio" name="filter" id="completed" checked />
+              <input type="radio" name="filter" id="completed" />
               <span>Completed</span>
             </label>
           </div>
           <span class="clear-completed">Clear Completed</span>
         </div>
       </main>
+      <div class="drag-to-reorder">Drag and drop to reorder list</div>
     </div>
     <script src="./script.js"></script>
   </body>
