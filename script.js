@@ -50,7 +50,7 @@ function addTask(text) {
   const elem = document.createElement("div");
   elem.classList.add("todo-container", "draggable");
   elem.setAttribute("draggable", "true");
-  elem.innerHTML = `<label> <input type="checkbox" />
+  elem.innerHTML = `<label> <input type="checkbox"/>
                     <span class="checkmark"></span>
                     <span class="text">${text}</span></label> 
                     <button class="remove-todo-item"></button>`;

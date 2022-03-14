@@ -9,25 +9,25 @@
   --font-clr-sec: hsl(234, 11%, 52%);
   --very-dark-blue: hsl(233, 14%, 35%);
   --very-dark-grayish-blue: hsl(237, 14%, 26%);
-
+  --bottom-buttons-clr: hsl(233, 14%, 35%);
+  --shadow-clr: rgb(18, 17, 17);
   --bg-image: url("./images/bg-desktop-dark.jpg");
 }
 
 .light-mode {
   --bright-blue: hsl(220, 98%, 61%);
-  --bg-todo: hsl(0, 0%, 98%);
-  --very-dark-blue: hsl(233, 14%, 35%); /*change*/
+  --bg-todo: hsl(0, 0%, 100%);
+  /* --bg-todo: hsl(0, 0%, 98%); */
+  --very-dark-blue: hsl(233, 11%, 84%);
   --heading-clr: hsl(0, 0%, 98%);
+  --font-clr: hsl(236, 6%, 46%);
+  --font-clr-hover: hsl(236, 13%, 45%);
+  --bottom-buttons-clr: hsl(229, 7%, 70%);
+  --shadow-clr: rgb(214, 207, 220);
+  /* --bg-clr: hsl(240, 5%, 96%); */
+  --bg-clr: hsl(0, 0%, 98%);
+  --font-clr-sec: hsl(236, 33%, 92%);
 
-  --bg-clr: hsl(231, 14%, 90%);
-  --font-clr-sec: hsl(236, 33%, 92%);
-  --font-clr: hsl(236, 9%, 61%);
-  --font-clr-hover: hsl(235, 19%, 35%);
-  /* --bg-todo: hsl(0, 0%, 98%);
-  --bg-clr: hsl(233, 11%, 84%);
-  --font-clr-sec: hsl(236, 33%, 92%);
-  --font-clr: hsl(236, 9%, 61%);
-  --font-clr-hover: hsl(235, 19%, 35%); */
   --bg-image: url("./images/bg-desktop-light.jpg");
 }
 
@@ -74,29 +74,28 @@ body {
   background-color: var(--bg-clr);
   font-family: var(--ff-josefin);
   font-size: 18px;
-  display: flex;
-  justify-content: center;
+  /* display: flex; */
+  /* justify-content: center; */
 }
 
-/*------------------------------------------------------------------*/
 /*---------------------HEADER & THEME-------------------------------*/
-/*------------------------------------------------------------------*/
 header {
-  padding-top: 100px;
-  padding-bottom: 50px;
+  padding-top: 80px;
+  padding-bottom: 40px;
 }
 
 .container {
+  min-width: 700px;
   width: 100%;
-  padding-left: 20%;
-  padding-right: 20%;
+  padding-left: 31%;
+  padding-right: 31%;
 }
 
 .todo-heading {
   font-size: 2.5rem;
   font-weight: 700;
   color: var(--heading-clr);
-  letter-spacing: 0.5rem;
+  letter-spacing: 15px;
 }
 
 .theme-toggle-btn #theme {
@@ -116,13 +115,11 @@ header {
   background: url(./images/icon-moon.svg);
 }
 
-/*------------------------------------------------------------------*/
 /*---------------------INPUT TASK CONTAINER-------------------------*/
-/*------------------------------------------------------------------*/
 .input-container {
   height: 64px;
   width: 100%;
-  border-radius: 5px;
+  border-radius: 6px;
   background-color: var(--bg-todo);
   margin: 0 0 25px;
   /* padding: 0 26px; */
@@ -130,17 +127,6 @@ header {
   display: flex;
   align-items: center;
 }
-
-/* .for-circle {
-  content: ;
-  width: 25px;
-  height: 25px;
-  margin-left: 25px;
-  
-  border: 1px solid var(--font-clr-hover);
-  border-radius: 50%;
-  
-} */
 
 .for-circle::before {
   content: "";
@@ -171,9 +157,12 @@ header {
   opacity: 0.8;
 }
 
-/*------------------------------------------------------------------*/
 /*---------------------TODO CONTAINER-------------------------------*/
-/*------------------------------------------------------------------*/
+.box-shadow {
+  box-shadow: 0px 16px 30px 1px var(--shadow-clr);
+  border-radius: 6px;
+  overflow: hidden;
+}
 
 .todo-container {
   height: 64px;
@@ -184,6 +173,7 @@ header {
   padding: 0;
   display: flex;
   align-items: center;
+  overflow-wrap: anywhere;
 }
 
 .todo-container button {
@@ -207,7 +197,6 @@ header {
   position: absolute;
 }
 
-/* test */
 .checkmark {
   content: "";
   width: 25px;
@@ -216,20 +205,29 @@ header {
   border: 1px solid var(--very-dark-blue);
   margin-left: 25px;
   margin-right: 25px;
+  flex-shrink: 0;
 }
+
+/* Gradient border on hover */
 .todo-container input[type="checkbox"]:hover ~ .checkmark {
-  border-color: wheat;
+  border-radius: 50%;
+  border: double 1.8px transparent;
+  background-image: linear-gradient(var(--bg-todo), var(--bg-todo)),
+    linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  background-origin: border-box;
+  background-clip: content-box, border-box;
 }
+
 .todo-container input[type="checkbox"]:checked ~ .checkmark {
+  border: none;
   background: center url(./images/icon-check.svg) no-repeat,
     linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 }
+
 .todo-container input[type="checkbox"]:checked ~ .text {
   text-decoration: line-through;
   color: var(--very-dark-blue);
 }
-
-/* test end */
 
 .remove-todo-item {
   width: 18px;
@@ -243,54 +241,19 @@ header {
   color: var(--very-dark-blue);
 }
 
-/* .todo-container label::before {
-  content: "";
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  border: 2px solid var(--very-dark-blue);
-  margin-left: 25px;
-  margin-right: 25px;
-}
-
-.todo-container label:hover::before,
-.todo-container input[type="checkbox"]:hover + label::before {
-  border-color: wheat;
-}
-
-.todo-container input[type="checkbox"]:checked + label::before {
-  content: url(./images/icon-check.svg);
-  border: none;
-  background-image: linear-gradient(
-    135deg,
-    hsl(192, 100%, 67%),
-    hsl(280, 87%, 65%)
-  );
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.todo-container input[type="checkbox"]:checked + label {
-  text-decoration: line-through;
-  color: var(--very-dark-blue);
-} */
-
-/*------------------------------------------------------------------*/
 /*---------------------BOTTOM BUTTONS-------------------------------*/
-/*------------------------------------------------------------------*/
 .bottom-btns {
   height: 64px;
   width: 100%;
-  border-radius: 5px;
-  border-top-right-radius: 0%;
-  border-top-left-radius: 0%;
+  /* border-radius: 5px; */
+  /* border-top-right-radius: 0%; */
+  /* border-top-left-radius: 0%; */
   background-color: var(--bg-todo);
   display: flex;
   align-items: center;
   font-size: 0.8rem;
-  font-weight: 400;
-  color: var(--very-dark-blue);
+  font-weight: 500;
+  color: var(--bottom-buttons-clr);
   padding: 20px 20px 20px 27px;
 }
 .filters {
