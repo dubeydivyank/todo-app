@@ -4,19 +4,6 @@ const inputText = document.querySelector("#input-task");
 const todoList = document.querySelector(".todolist-container");
 const itemsLeft = document.querySelector(".item-count");
 const clearCompleted = document.querySelector(".clear-completed");
-const draggables = document.querySelectorAll(".draggable");
-//drag n drop functionality
-draggables.forEach((draggable) => {
-  draggable.addEventListener("dragstart", () => {
-    draggable.classList.add("dragging");
-  });
-});
-
-draggables.forEach((draggable) => {
-  draggable.addEventListener("dragend", () => {
-    draggable.classList.remove("dragging");
-  });
-});
 
 //EVENT LISTENERS
 document.addEventListener("DOMContentLoaded", getTodosFromLocal);
@@ -167,3 +154,9 @@ function removeFromLocal(element) {
   todos.splice(todos.indexOf(elemTobeRemoved), 1);
   localStorage.setItem("todos", JSON.stringify(todos));
 }
+
+// Drag & Drop to reorder list
+let dragbox = document.querySelector(".todolist-container");
+new Sortable(dragbox, {
+  animation: 400,
+});
