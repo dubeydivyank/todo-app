@@ -1,7 +1,6 @@
 .dark-mode {
   --bright-blue: hsl(220, 98%, 61%);
   --bg-todo: hsl(235, 24%, 19%);
-
   --bg-clr: hsl(235, 21%, 11%);
   --font-clr: hsl(234, 39%, 85%);
   --heading-clr: hsl(236, 33%, 92%);
@@ -17,17 +16,14 @@
 .light-mode {
   --bright-blue: hsl(220, 98%, 61%);
   --bg-todo: hsl(0, 0%, 100%);
-  /* --bg-todo: hsl(0, 0%, 98%); */
   --very-dark-blue: hsl(233, 11%, 84%);
   --heading-clr: hsl(0, 0%, 98%);
   --font-clr: hsl(236, 6%, 46%);
   --font-clr-hover: hsl(236, 13%, 45%);
   --bottom-buttons-clr: hsl(229, 7%, 70%);
   --shadow-clr: rgb(214, 207, 220);
-  /* --bg-clr: hsl(240, 5%, 96%); */
   --bg-clr: hsl(0, 0%, 98%);
   --font-clr-sec: hsl(236, 33%, 92%);
-
   --bg-image: url("./images/bg-desktop-light.jpg");
 }
 
@@ -208,7 +204,7 @@ header {
   flex-shrink: 0;
 }
 
-/* Gradient border on hover */
+/* Gradient border of checkmark on hover */
 .todo-container input[type="checkbox"]:hover ~ .checkmark {
   border-radius: 50%;
   border: double 1.8px transparent;

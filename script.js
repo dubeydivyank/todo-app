@@ -56,6 +56,7 @@ function addTask(text) {
                     <button class="remove-todo-item"></button>`;
 
   todoList.append(elem);
+
   saveTodosToLocal(text);
   updateItemCount(1);
 }
@@ -77,6 +78,41 @@ function updateItemCount(num) {
 }
 
 //filter list
+document.querySelectorAll(".filters input").forEach((button) => {
+  button.addEventListener("click", (e) => {
+    console.log(e.target.id);
+    filterTodoList(e.target.id);
+  });
+});
+
+function filterTodoList(id) {
+  const list = document.querySelectorAll(".todo-container");
+  switch (id) {
+    case "all":
+      list.forEach((item) => {
+        item.classList.remove("hidden");
+      });
+      break;
+    case "active":
+      list.forEach((item) => {
+        if (item.querySelector("input").checked) {
+          item.classList.add("hidden");
+        } else {
+          item.classList.remove("hidden");
+        }
+      });
+      break;
+    case "completed":
+      list.forEach((item) => {
+        if (!item.querySelector("input").checked) {
+          item.classList.add("hidden");
+        } else {
+          item.classList.remove("hidden");
+        }
+      });
+      break;
+  }
+}
 
 //clear all completed tasks
 function removeAllCompleted() {
@@ -84,7 +120,6 @@ function removeAllCompleted() {
     .querySelectorAll('.todo-container input[type="checkbox"]:checked')
     .forEach((item) => {
       removeTask(item.closest("div"));
-      // console.log(item.closest("div"));
     });
 }
 
